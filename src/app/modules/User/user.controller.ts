@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Request, Response } from 'express'
 import { UserServices } from './user.service'
 
@@ -14,7 +16,7 @@ const login = async (req: Request, res: Response) => {
     if (result) {
       return res.status(201).json({
         message: 'User logged in successfully',
-        data: validUser,
+        data: result,
       })
     } else {
       return res
