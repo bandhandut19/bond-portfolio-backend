@@ -4,7 +4,7 @@ import { Skills } from './skills.constant'
 
 const skillSchema = new Schema<TSkill>(
   {
-    name: {
+    type: {
       type: String,
       required: true,
     },

@@ -1,5 +1,5 @@
 export type TSkill = {
-  name: string
+  type: string
   category: 'soft' | 'tech'
   description?: string
   level?: number
