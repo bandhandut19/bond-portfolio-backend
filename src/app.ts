@@ -1,5 +1,6 @@
 import express, { Application, Request, Response } from 'express'
 import cors from 'cors'
+import router from './app/routes'
 const app: Application = express()
 
 const corsOptions = {
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
   next()
 })
 
+app.use('/portfolio', router)
 app.get('/', (req: Request, res: Response) => {
   res.send('Welcome to Bond Portfolio')
 })
