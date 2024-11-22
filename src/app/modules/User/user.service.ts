@@ -21,17 +21,17 @@ const loginIntoDB = async (payload: TAuth) => {
   }
   //   console.log(jwtPayload)
 
-  //   const userAccessToken = jwt.sign(
-  //     jwtPayload,
-  //     config.jwt_access_secret_key as string,
-  //     {
-  //       expiresIn: config.jwt_access_expires_in,
-  //     },
-  //   )
-  //   console.log(userAccessToken)
+  const userAccessToken = jwt.sign(
+    jwtPayload,
+    config.jwt_access_secret_key as string,
+    {
+      expiresIn: config.jwt_access_expires_in,
+    },
+  )
+  console.log(userAccessToken)
 
   return {
-    // userAccessToken,
+    userAccessToken,
     jwtPayload,
     validUser,
   }

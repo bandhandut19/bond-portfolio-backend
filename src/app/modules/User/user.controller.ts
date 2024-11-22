@@ -6,10 +6,10 @@ const login = async (req: Request, res: Response) => {
   try {
     const result = await UserServices.loginIntoDB(payload)
 
-    const { validUser } = result
-    // res.cookie('accessToken', userAccessToken, {
-    //   httpOnly: true,
-    // })
+    const { userAccessToken, validUser } = result
+    res.cookie('accessToken', userAccessToken, {
+      httpOnly: true,
+    })
 
     if (result) {
       return res.status(201).json({
