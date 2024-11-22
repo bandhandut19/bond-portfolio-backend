@@ -8,7 +8,7 @@ const insertSkill = async (req: Request, res: Response) => {
     if (result) {
       return res.status(201).json({
         message: 'Skill added successfully',
-        skill: result,
+        data: result,
       })
     } else {
       return res
@@ -25,14 +25,12 @@ const getSkills = async (req: Request, res: Response) => {
     if (result) {
       return res.status(201).json({
         message: 'Skills retrived successfully',
-        skill: result,
+        data: result,
       })
     } else {
-      return res
-        .status(500)
-        .json({
-          error: 'An error occured while retriving skills from database',
-        })
+      return res.status(500).json({
+        error: 'An error occured while retriving skills from database',
+      })
     }
   } catch (err: any) {
     return res.status(500).json({ error: 'Internal Server Error' })
