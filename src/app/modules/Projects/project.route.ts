@@ -4,5 +4,7 @@ const ProjectRouter = express.Router()
 
 ProjectRouter.post('/project', ProjectControllers.insertProject)
 ProjectRouter.get('/project', ProjectControllers.getProjects)
-ProjectRouter.delete('/project', ProjectControllers.deleteProject)
-ProjectRouter.patch('/project', ProjectControllers.updateProject)
+ProjectRouter.delete('/project/:id', ProjectControllers.deleteProject)
+ProjectRouter.patch('/project/:id', ProjectControllers.updateProject)
+
+export const ProjectRoutes = ProjectRouter
