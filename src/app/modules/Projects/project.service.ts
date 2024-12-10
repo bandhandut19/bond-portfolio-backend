@@ -14,7 +14,7 @@ const deleteProjectFromDB = async (id: string) => {
   return result
 }
 
-const updateProjectsIntoDB = async (payload: TProject, id: string) => {
+const updateProjectsIntoDB = async (payload: Partial<TProject>, id: string) => {
   const result = await Project.findByIdAndUpdate(
     id,
     {
