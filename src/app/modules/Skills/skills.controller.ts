@@ -38,8 +38,27 @@ const getSkills = async (req: Request, res: Response) => {
     return res.status(500).json({ error: 'Internal Server Error' })
   }
 }
+const deleteSkills = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id
+    const result = await SkillServices.deleteSkillFromDB(id)
+    if (result) {
+      return res.status(201).json({
+        message: 'Skill Deleted successfully',
+        data: result,
+      })
+    } else {
+      return res.status(500).json({
+        error: 'An error occured while deleting skill from database',
+      })
+    }
+  } catch (err: any) {
+    return res.status(500).json({ error: 'Internal Server Error' })
+  }
+}
 
 export const SkillController = {
   insertSkill,
   getSkills,
+  deleteSkills,
 }
