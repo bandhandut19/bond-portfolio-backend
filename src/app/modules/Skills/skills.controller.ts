@@ -56,9 +56,29 @@ const deleteSkills = async (req: Request, res: Response) => {
     return res.status(500).json({ error: 'Internal Server Error' })
   }
 }
+const updateSkills = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id
+    const payload = req.body
+    const result = await SkillServices.updateSkillIntoDB(id, payload)
+    if (result) {
+      return res.status(201).json({
+        message: 'Skill Updated successfully',
+        data: result,
+      })
+    } else {
+      return res.status(500).json({
+        error: 'An error occured while updating skill from database',
+      })
+    }
+  } catch (err: any) {
+    return res.status(500).json({ error: 'Internal Server Error' })
+  }
+}
 
 export const SkillController = {
   insertSkill,
   getSkills,
   deleteSkills,
+  updateSkills,
 }

@@ -1,3 +1,4 @@
+import { TProject } from '../Projects/project.instance'
 import { TSkill } from './skills.interface'
 import { Skill } from './skills.model'
 
@@ -10,13 +11,21 @@ const getSkillsFromDB = async () => {
   return result
 }
 const deleteSkillFromDB = async (id: string) => {
-  console.log(id)
   const result = await Skill.findByIdAndDelete(id)
   return result
 }
 
+const updateSkillIntoDB = async (id: string, payload: Partial<TProject>) => {
+  const result = await Skill.findByIdAndUpdate(
+    id,
+    { $set: payload },
+    { new: true },
+  )
+  return result
+}
 export const SkillServices = {
   insertSkillIntoDB,
   getSkillsFromDB,
   deleteSkillFromDB,
+  updateSkillIntoDB,
 }
