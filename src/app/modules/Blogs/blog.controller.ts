@@ -62,9 +62,31 @@ const deletBlogs = async (req: Request, res: Response) => {
     })
   }
 }
+const updateBlogs = async (req: Request, res: Response) => {
+  const { id } = req.params
+  const payload = req.body
+  try {
+    const result = await BlogServices.updateBlogsIntoDB(id, payload)
+    if (result) {
+      return res.status(201).json({
+        message: 'Blog updated successfully',
+        data: result,
+      })
+    } else {
+      return res.status(500).json({
+        error: 'An error occured while updating blog from database',
+      })
+    }
+  } catch (err: any) {
+    return res.status(500).json({
+      error: 'Internal Server Error',
+    })
+  }
+}
 
 export const BlogControllers = {
   addBlogs,
   getBlogs,
   deletBlogs,
+  updateBlogs,
 }
